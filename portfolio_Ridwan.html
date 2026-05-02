@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taiob Md Ridwan — AI Engineer & Data Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0a0a0f;--bg2:#111118;--bg3:#1a1a24;--surface:#1e1e2e;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --text:#f0efe8;--muted:#888899;
+  --accent:#7c6aff;--accent2:#00d4aa;--accent3:#ff6b6b;--warm:#ffb347;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none;}
+.cursor{width:12px;height:12px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transition:transform 0.15s ease,background 0.2s;transform:translate(-50%,-50%);}
+.cursor-ring{width:36px;height:36px;border:1px solid rgba(124,106,255,0.5);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:transform 0.35s cubic-bezier(.23,1,.32,1),width 0.2s,height 0.2s;transform:translate(-50%,-50%);}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.5;}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(124,106,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(124,106,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(120px);opacity:0.1;}
+.orb1{width:600px;height:600px;background:var(--accent);top:-250px;right:-200px;}
+.orb2{width:450px;height:450px;background:var(--accent2);bottom:-200px;left:-150px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text);text-decoration:none;letter-spacing:-0.02em;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-status{display:flex;align-items:center;gap:0.5rem;font-size:0.72rem;color:var(--accent2);}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+
+/* HERO */
+section{position:relative;z-index:1;}
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;padding:8rem 3rem 4rem;max-width:1200px;margin:0 auto;}
+.hero-eyebrow{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;}
+.hero-eyebrow::before{content:'';display:inline-block;width:32px;height:1px;background:var(--accent);}
+.hero-name{font-family:'Syne',sans-serif;font-size:clamp(3rem,7vw,6rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;margin-bottom:0.25rem;}
+.hero-name .line2{display:block;color:transparent;-webkit-text-stroke:1px rgba(240,239,232,0.3);}
+.hero-title{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(1.2rem,2.5vw,1.7rem);color:var(--muted);margin:1.5rem 0 2.5rem;}
+.hero-title em{color:var(--accent2);font-style:normal;}
+.hero-desc{max-width:500px;font-size:0.82rem;line-height:1.9;color:var(--muted);margin-bottom:2.5rem;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.btn-primary{padding:0.9rem 2rem;background:var(--accent);color:#fff;font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.08em;text-decoration:none;border:none;cursor:none;transition:transform 0.2s,box-shadow 0.2s;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,106,255,0.4);}
+.btn-outline{padding:0.9rem 2rem;background:transparent;color:var(--text);font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.08em;text-decoration:none;border:1px solid var(--border2);cursor:none;transition:border-color 0.2s,background 0.2s;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));}
+.btn-outline:hover{border-color:var(--accent);background:rgba(124,106,255,0.08);}
+.hero-stats{display:flex;gap:2.5rem;}
+.stat-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--text);line-height:1;}
+.stat-num span{color:var(--accent);}
+.stat-label{font-size:0.65rem;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-top:0.25rem;}
+
+/* PHOTO CARD */
+.hero-photo-wrap{position:relative;display:flex;justify-content:center;align-items:center;}
+.photo-frame{position:relative;width:340px;}
+.photo-border-anim{position:absolute;inset:-2px;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3),var(--accent));background-size:300% 300%;animation:gradientShift 4s ease infinite;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));z-index:0;}
+@keyframes gradientShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.photo-inner{position:relative;z-index:1;margin:2px;background:var(--bg3);clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));overflow:hidden;}
+.photo-inner img{width:100%;display:block;filter:grayscale(15%) contrast(1.05);transition:filter 0.4s;}
+.photo-inner:hover img{filter:grayscale(0%) contrast(1.1);}
+.photo-badge{position:absolute;bottom:-1rem;left:-1rem;background:var(--bg2);border:1px solid var(--border2);padding:0.75rem 1rem;z-index:10;}
+.photo-badge-label{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+.photo-badge-val{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--accent2);}
+.photo-tag{position:absolute;top:1rem;right:-0.5rem;background:var(--accent);color:#fff;font-size:0.65rem;padding:0.3rem 0.75rem;letter-spacing:0.1em;z-index:10;}
+.photo-dots{position:absolute;top:-1.5rem;right:-1.5rem;display:grid;grid-template-columns:repeat(5,8px);gap:5px;z-index:0;}
+.dot-item{width:5px;height:5px;border-radius:50%;background:rgba(124,106,255,0.3);}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 0;overflow:hidden;background:var(--bg2);}
+.marquee-track{display:flex;gap:3rem;white-space:nowrap;animation:marquee 25s linear infinite;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);}
+.marquee-track .hi{color:var(--accent);}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ABOUT */
+#about{padding:8rem 3rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.about-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;}
+.about-heading{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:2rem;}
+.about-heading em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent2);}
+.about-text{font-size:0.82rem;color:var(--muted);line-height:1.9;margin-bottom:1.25rem;}
+.journey-item{display:flex;gap:1.25rem;padding:1.5rem 0;border-bottom:1px solid var(--border);}
+.journey-item:first-child{border-top:1px solid var(--border);}
+.journey-year{font-size:0.68rem;letter-spacing:0.1em;color:var(--accent);min-width:48px;padding-top:0.2rem;}
+.journey-title{font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;margin-bottom:0.25rem;}
+.journey-desc{font-size:0.78rem;color:var(--muted);line-height:1.7;}
+
+/* SKILLS */
+#skills{padding:6rem 3rem;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.skills-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);}
+.section-heading{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:700;letter-spacing:-0.02em;margin-top:0.5rem;}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:3rem;}
+.skill-card{background:var(--bg2);padding:2rem;transition:background 0.2s;}
+.skill-card:hover{background:var(--bg3);}
+.skill-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1.25rem;}
+.skill-icon.purple{background:rgba(124,106,255,0.12);}
+.skill-icon.teal{background:rgba(0,212,170,0.12);}
+.skill-icon.red{background:rgba(255,107,107,0.12);}
+.skill-icon.amber{background:rgba(255,179,71,0.12);}
+.skill-name{font-family:'Syne',sans-serif;font-weight:600;font-size:0.9rem;margin-bottom:0.75rem;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.tag{font-size:0.63rem;padding:0.22rem 0.55rem;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--muted);}
+
+/* PROJECTS */
+#projects{padding:8rem 3rem;max-width:1200px;margin:0 auto;}
+.projects-header{margin-bottom:1rem;}
+.proj-tabs{display:flex;gap:0;margin-bottom:3.5rem;border:1px solid var(--border);width:fit-content;}
+.proj-tab{padding:0.65rem 1.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);background:transparent;border:none;cursor:none;transition:all 0.2s;font-family:'DM Mono',monospace;}
+.proj-tab.active{background:var(--accent);color:#fff;}
+.proj-tab:not(.active):hover{color:var(--text);background:var(--bg3);}
+
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* AI/DS project cards */
+.project-card{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);margin-bottom:1.5rem;transition:border-color 0.2s;overflow:hidden;}
+.project-card:hover{border-color:var(--border2);}
+.project-visual{aspect-ratio:4/3;background:var(--bg3);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+.project-info{padding:2.25rem;display:flex;flex-direction:column;justify-content:space-between;}
+.project-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;}
+.project-tag{font-size:0.63rem;padding:0.2rem 0.6rem;letter-spacing:0.1em;text-transform:uppercase;}
+.tag-ai{background:rgba(124,106,255,0.12);color:var(--accent);border:1px solid rgba(124,106,255,0.25);}
+.tag-data{background:rgba(0,212,170,0.1);color:var(--accent2);border:1px solid rgba(0,212,170,0.2);}
+.tag-viz{background:rgba(255,179,71,0.1);color:var(--warm);border:1px solid rgba(255,179,71,0.2);}
+.tag-stat{background:rgba(255,107,107,0.1);color:var(--accent3);border:1px solid rgba(255,107,107,0.2);}
+.tag-web{background:rgba(99,179,255,0.1);color:#63b3ff;border:1px solid rgba(99,179,255,0.2);}
+.tag-design{background:rgba(255,107,200,0.1);color:#ff6bc8;border:1px solid rgba(255,107,200,0.2);}
+.project-num{font-size:0.68rem;color:var(--muted);margin-left:auto;}
+.project-title{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.7rem;line-height:1.2;}
+.project-desc{font-size:0.78rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;}
+.project-stack{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;}
+.stack-tag{font-size:0.63rem;padding:0.2rem 0.55rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);}
+.project-links{display:flex;gap:1rem;}
+.proj-link{font-size:0.72rem;color:var(--muted);text-decoration:none;letter-spacing:0.06em;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s;margin-top:0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.1rem;}
+.proj-link:hover{color:var(--accent2);border-color:var(--accent2);}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;}
+.projects-grid .project-card{grid-template-columns:1fr;margin-bottom:0;}
+
+/* WEB WORKS GRID */
+.web-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.web-card{border:1px solid var(--border);overflow:hidden;transition:border-color 0.2s,transform 0.2s;cursor:none;}
+.web-card:hover{border-color:var(--border2);transform:translateY(-4px);}
+.web-card-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;filter:grayscale(20%);transition:filter 0.3s;}
+.web-card:hover .web-card-img{filter:grayscale(0%);}
+.web-card-body{padding:1.25rem;}
+.web-card-title{font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;margin-bottom:0.4rem;}
+.web-card-sub{font-size:0.72rem;color:var(--muted);}
+.web-card-link{display:inline-flex;align-items:center;gap:0.35rem;font-size:0.68rem;color:var(--accent2);text-decoration:none;margin-top:0.75rem;border-bottom:1px solid rgba(0,212,170,0.3);padding-bottom:0.1rem;transition:border-color 0.2s;}
+.web-card-link:hover{border-color:var(--accent2);}
+
+/* LOGO GRID */
+.logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);}
+.logo-cell{background:var(--bg2);padding:1.5rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.logo-cell:hover{background:var(--bg3);}
+.logo-cell img{width:100%;max-width:120px;height:90px;object-fit:contain;filter:grayscale(30%);transition:filter 0.3s;}
+.logo-cell:hover img{filter:grayscale(0%);}
+
+/* EXPERIENCE */
+#experience{padding:8rem 3rem;background:var(--bg2);border-top:1px solid var(--border);}
+.exp-inner{max-width:1200px;margin:0 auto;}
+.exp-row{display:grid;grid-template-columns:200px 1fr;gap:4rem;padding:3rem 0;border-bottom:1px solid var(--border);}
+.exp-row:first-of-type{border-top:1px solid var(--border);margin-top:3rem;}
+.exp-period{font-size:0.72rem;color:var(--accent);letter-spacing:0.08em;margin-bottom:0.5rem;}
+.exp-company{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;}
+.exp-location{font-size:0.72rem;color:var(--muted);margin-top:0.25rem;}
+.exp-role{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:1rem;letter-spacing:-0.01em;}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.exp-bullets li{font-size:0.78rem;color:var(--muted);line-height:1.7;padding-left:1.25rem;position:relative;}
+.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent2);font-size:0.75rem;}
+
+/* CONTACT */
+#contact{padding:8rem 3rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
+.contact-left{}
+.contact-sub{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;}
+.contact-heading{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;letter-spacing:-0.03em;line-height:1.05;margin-bottom:1.25rem;}
+.contact-heading .outline{color:transparent;-webkit-text-stroke:1px rgba(240,239,232,0.25);}
+.contact-info-text{font-size:0.82rem;color:var(--muted);line-height:1.9;margin-bottom:2rem;}
+.contact-email{display:inline-block;font-family:'Instrument Serif',serif;font-style:italic;font-size:1.2rem;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:0.4rem;transition:color 0.2s,border-color 0.2s;margin-bottom:2rem;}
+.contact-email:hover{color:var(--accent2);border-color:var(--accent2);}
+.social-links{display:flex;flex-wrap:wrap;gap:1rem;}
+.social-link{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;display:flex;align-items:center;gap:0.4rem;border:1px solid var(--border);padding:0.5rem 1rem;}
+.social-link:hover{color:var(--text);border-color:var(--border2);}
+
+/* MESSAGE FORM */
+.contact-right{}
+.form-heading{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:1.75rem;color:var(--text);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;}
+.form-control{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:'DM Mono',monospace;font-size:0.8rem;padding:0.85rem 1rem;outline:none;transition:border-color 0.2s;resize:none;}
+.form-control:focus{border-color:var(--accent);}
+.form-control::placeholder{color:var(--muted);opacity:0.6;}
+textarea.form-control{height:130px;}
+.submit-btn{width:100%;padding:1rem;background:var(--accent);color:#fff;font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:none;transition:background 0.2s,transform 0.2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));}
+.submit-btn:hover{background:#6a58ee;transform:translateY(-1px);}
+.form-success{display:none;background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.25);padding:1rem;font-size:0.78rem;color:var(--accent2);margin-top:0.75rem;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;font-size:0.7rem;color:var(--muted);}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* CNN viz */
+.cnn-visual{display:flex;align-items:center;gap:8px;padding:1.5rem;}
+.cnn-layer{display:flex;flex-direction:column;gap:4px;align-items:center;}
+.cnn-block{width:18px;background:rgba(124,106,255,0.6);border-radius:2px;}
+.cnn-arrow{width:16px;height:1px;background:rgba(255,255,255,0.15);}
+.cnn-label{font-size:0.48rem;color:var(--muted);margin-top:3px;letter-spacing:0.08em;}
+.cnn-output{display:flex;flex-direction:column;gap:4px;}
+.cnn-prob{display:flex;align-items:center;gap:5px;font-size:0.58rem;}
+.cnn-prob-bar{height:5px;background:rgba(124,106,255,0.4);border-radius:2px;}
+.cnn-prob-bar.top{background:var(--accent2);}
+.cnn-prob-text{color:var(--muted);min-width:48px;}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  #hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;}
+  .hero-photo-wrap{display:none;}
+  #about{grid-template-columns:1fr;padding:4rem 1.5rem;gap:3rem;}
+  .skills-grid{grid-template-columns:repeat(2,1fr);}
+  #skills,#projects,#experience,#contact{padding:4rem 1.5rem;}
+  .project-card{grid-template-columns:1fr;}
+  .projects-grid{grid-template-columns:1fr;}
+  .web-grid{grid-template-columns:repeat(2,1fr);}
+  .logo-grid{grid-template-columns:repeat(3,1fr);}
+  #contact{grid-template-columns:1fr;}
+  .exp-row{grid-template-columns:1fr;gap:1.5rem;}
+  .form-row{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:0.75rem;text-align:center;}
+}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">T<span>.</span>Ridwan</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-status"><div class="status-dot"></div>Available for work</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:1200px;margin:0 auto;">
+  <div class="fade-up">
+    <p class="hero-eyebrow">Aspiring AI Engineer & Data Scientist</p>
+    <h1 class="hero-name">Taiob Md<br><span class="line2">Ridwan</span></h1>
+    <p class="hero-title">Turning <em>data into intelligence</em>,<br>intelligence into products.</p>
+    <p class="hero-desc">Building AI systems, deep learning models, and data pipelines. Currently studying Data Science at UIU — merging creative design roots with machine learning to craft things that actually matter.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+
+  <!-- PHOTO -->
+  <div class="hero-photo-wrap fade-up">
+    <div class="photo-dots"><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div><div class="dot-item"></div></div>
+    <div class="photo-frame">
+      <div class="photo-border-anim"></div>
+      <div class="photo-inner">
+        <img src="Ridwan.jpeg" alt="Photo of Taiob Md Ridwan">
+      </div>
+      <div class="photo-tag">BSc Data Science · UIU</div>
+      <div class="photo-badge">
+        <div class="photo-badge-label">Based in</div>
+        <div class="photo-badge-val">Dhaka, BD</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="hi">Python</span> · <span class="hi">PyTorch</span> · Deep Learning · <span class="hi">fastai</span> · CNN · Transfer Learning · <span class="hi">Pandas</span> · <span class="hi">Tableau</span> · Web Scraping · <span class="hi">Selenium</span> · Data Visualization · Machine Learning · EDA · <span class="hi">Gradio</span> · HTML/CSS · JavaScript · Figma · Illustrator ·
+    <span class="hi">Python</span> · <span class="hi">PyTorch</span> · Deep Learning · <span class="hi">fastai</span> · CNN · Transfer Learning · <span class="hi">Pandas</span> · <span class="hi">Tableau</span> · Web Scraping · <span class="hi">Selenium</span> · Data Visualization · Machine Learning · EDA · <span class="hi">Gradio</span> · HTML/CSS · JavaScript · Figma · Illustrator ·
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" style="max-width:1200px;margin:0 auto;">
+  <div class="fade-up">
+    <p class="about-label">About Me</p>
+    <h2 class="about-heading">Creative roots.<br><em>Data-driven</em> future.</h2>
+    <p class="about-text">I started as a graphic designer, evolved into a front-end developer, and now I'm going deep into AI and data science. Each phase shaped how I think about building — with clarity, purpose, and craft.</p>
+    <p class="about-text">Currently at United International University pursuing a Bachelor of Data Science, I'm building CNN image classifiers, market analysis dashboards, and statistical models on real-world datasets.</p>
+    <p class="about-text">Based in Dhaka, Bangladesh. Open to collaborations, freelance data projects, and AI engineering opportunities.</p>
+  </div>
+  <div class="fade-up">
+    <div class="journey-item"><div class="journey-year">2021</div><div><div class="journey-title">Graphic Designer</div><div class="journey-desc">Started with logo & brand identity design. Built first portfolio website from scratch.</div></div></div>
+    <div class="journey-item"><div class="journey-year">2022</div><div><div class="journey-title">Front-End Developer</div><div class="journey-desc">Transitioned into web development — HTML, CSS, JS, Bootstrap, jQuery. Fiverr web design clients.</div></div></div>
+    <div class="journey-item"><div class="journey-year">2024</div><div><div class="journey-title">Data Analyst → Data Science Student</div><div class="journey-desc">First data viz project (King County Housing). Enrolled in BSc Data Science at UIU.</div></div></div>
+    <div class="journey-item"><div class="journey-year">2025</div><div><div class="journey-title">Aspiring AI Engineer</div><div class="journey-desc">Built CNN vehicle classifier with PyTorch + Gradio. Published Japanese car market analysis on Tableau Public.</div></div></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-inner">
+    <p class="section-label">Technical Skills</p>
+    <h2 class="section-heading">What I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-card fade-up"><div class="skill-icon purple">🤖</div><div class="skill-name">AI & Deep Learning</div><div class="skill-tags"><span class="tag">PyTorch</span><span class="tag">fastai</span><span class="tag">CNN</span><span class="tag">ConvNeXt</span><span class="tag">Transfer Learning</span><span class="tag">Gradio</span></div></div>
+      <div class="skill-card fade-up"><div class="skill-icon teal">📊</div><div class="skill-name">Data Science</div><div class="skill-tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Seaborn</span><span class="tag">Matplotlib</span><span class="tag">Tableau</span><span class="tag">SQL</span></div></div>
+      <div class="skill-card fade-up"><div class="skill-icon red">🕸️</div><div class="skill-name">Web Scraping</div><div class="skill-tags"><span class="tag">BeautifulSoup</span><span class="tag">Selenium</span><span class="tag">Requests</span><span class="tag">Automation</span></div></div>
+      <div class="skill-card fade-up"><div class="skill-icon amber">🎨</div><div class="skill-name">Web & Design</div><div class="skill-tags"><span class="tag">HTML/CSS/JS</span><span class="tag">Bootstrap</span><span class="tag">jQuery</span><span class="tag">Figma</span><span class="tag">Illustrator</span><span class="tag">Photoshop</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header fade-up">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-heading" style="margin-bottom:1.5rem;">Selected work</h2>
+    <div class="proj-tabs">
+      <button class="proj-tab active" onclick="showTab('ai')">AI & Data Science</button>
+      <button class="proj-tab" onclick="showTab('web')">Web Projects</button>
+      <button class="proj-tab" onclick="showTab('design')">Logo & Design</button>
+    </div>
+  </div>
+
+  <!-- AI TAB -->
+  <div id="tab-ai" class="tab-panel active">
+    <div class="project-card fade-up">
+      <div class="project-visual">
+        <div style="display:flex;align-items:center;gap:8px;padding:1.5rem;" class="cnn-visual">
+          <div class="cnn-layer"><div style="width:36px;height:36px;background:rgba(124,106,255,0.25);border-radius:4px;border:1px solid rgba(124,106,255,0.4);display:flex;align-items:center;justify-content:center;font-size:1rem;">🚗</div><div class="cnn-label">Input</div></div>
+          <div class="cnn-arrow"></div>
+          <div class="cnn-layer"><div class="cnn-block" style="height:52px;"></div><div class="cnn-block" style="height:52px;opacity:.7;"></div><div class="cnn-block" style="height:52px;opacity:.4;"></div><div class="cnn-label">Conv1</div></div>
+          <div class="cnn-arrow"></div>
+          <div class="cnn-layer"><div class="cnn-block" style="height:42px;"></div><div class="cnn-block" style="height:42px;opacity:.7;"></div><div class="cnn-block" style="height:42px;opacity:.5;"></div><div class="cnn-block" style="height:42px;opacity:.2;"></div><div class="cnn-label">Conv2</div></div>
+          <div class="cnn-arrow"></div>
+          <div class="cnn-layer"><div class="cnn-block" style="height:34px;width:22px;background:rgba(0,212,170,0.6);"></div><div class="cnn-block" style="height:34px;width:22px;background:rgba(0,212,170,0.4);"></div><div class="cnn-block" style="height:34px;width:22px;background:rgba(0,212,170,0.2);"></div><div class="cnn-label">ConvNeXt</div></div>
+          <div class="cnn-arrow"></div>
+          <div class="cnn-output">
+            <div class="cnn-prob"><div class="cnn-prob-bar top" style="width:58px;"></div><span class="cnn-prob-text">Car 92%</span></div>
+            <div class="cnn-prob"><div class="cnn-prob-bar" style="width:18px;"></div><span class="cnn-prob-text">Bus 5%</span></div>
+            <div class="cnn-prob"><div class="cnn-prob-bar" style="width:10px;"></div><span class="cnn-prob-text">Truck 2%</span></div>
+            <div class="cnn-prob"><div class="cnn-prob-bar" style="width:5px;"></div><span class="cnn-prob-text">Moto 1%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div>
+          <div class="project-meta"><span class="project-tag tag-ai">Deep Learning</span><span class="project-tag tag-ai">Computer Vision</span><span class="project-num">01</span></div>
+          <h3 class="project-title">Vehicle Classification using CNN</h3>
+          <p class="project-desc">End-to-end deep learning pipeline classifying vehicle types using a fine-tuned ConvNeXt model. Deployed as a real-time Gradio web app achieving 92% confidence on car classification.</p>
+          <div class="project-stack"><span class="stack-tag">PyTorch</span><span class="stack-tag">fastai</span><span class="stack-tag">ConvNeXt</span><span class="stack-tag">Gradio</span><span class="stack-tag">Transfer Learning</span></div>
+        </div>
+        <div class="project-links">
+          <a href="https://tmridwan.github.io/vehicle_recognizer" target="_blank" class="web-card-link">↗ View Live</a>
+          <a href="https://github.com/tmridwan/vehicle_recognizer" class="proj-link" target="_blank">↗ GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card fade-up">
+        <div class="project-visual" style="aspect-ratio:16/9;">
+          <div style="padding:1.5rem;width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:rgba(255,179,71,0.08);border:1px solid rgba(255,179,71,0.2);border-radius:4px;padding:0.75rem;">
+              <div style="font-size:0.55rem;color:var(--warm);margin-bottom:0.4rem;">Brand Listings</div>
+              <div style="height:4px;background:rgba(255,179,71,0.6);border-radius:2px;width:100%;margin:2px 0;"></div>
+              <div style="height:4px;background:rgba(255,179,71,0.4);border-radius:2px;width:75%;margin:2px 0;"></div>
+              <div style="height:4px;background:rgba(255,179,71,0.25);border-radius:2px;width:50%;margin:2px 0;"></div>
+            </div>
+            <div style="background:rgba(255,179,71,0.08);border:1px solid rgba(255,179,71,0.2);border-radius:4px;padding:0.75rem;">
+              <div style="font-size:0.55rem;color:var(--warm);margin-bottom:0.4rem;">Price vs Age</div>
+              <svg width="100%" height="40" viewBox="0 0 80 40"><polyline points="5,5 20,12 35,20 50,30 65,35 75,37" fill="none" stroke="rgba(255,179,71,0.7)" stroke-width="1.5"/></svg>
+            </div>
+            <div style="background:rgba(255,179,71,0.08);border:1px solid rgba(255,179,71,0.2);border-radius:4px;padding:0.75rem;">
+              <div style="font-size:0.55rem;color:var(--warm);margin-bottom:0.3rem;">Fuel Premium</div>
+              <div style="font-size:0.55rem;color:var(--muted);">Hybrid ↑18%</div>
+              <div style="font-size:0.55rem;color:var(--muted);">Octane ↑12%</div>
+            </div>
+            <div style="background:rgba(255,179,71,0.08);border:1px solid rgba(255,179,71,0.2);border-radius:4px;padding:0.75rem;display:flex;align-items:flex-end;gap:3px;justify-content:center;">
+              <div style="width:8px;height:35px;background:rgba(255,179,71,0.7);border-radius:2px 2px 0 0;"></div>
+              <div style="width:8px;height:28px;background:rgba(255,179,71,0.5);border-radius:2px 2px 0 0;"></div>
+              <div style="width:8px;height:20px;background:rgba(255,179,71,0.35);border-radius:2px 2px 0 0;"></div>
+              <div style="width:8px;height:14px;background:rgba(255,179,71,0.2);border-radius:2px 2px 0 0;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div>
+            <div class="project-meta"><span class="project-tag tag-viz">Tableau</span><span class="project-tag tag-data">Scraping</span><span class="project-num">02</span></div>
+            <h3 class="project-title">Japanese Car Market Analysis</h3>
+            <p class="project-desc">Scraped live listings with Selenium, built 3 interactive Tableau dashboards analysing brand popularity, depreciation curves, and fuel premiums.</p>
+            <div class="project-stack"><span class="stack-tag">Selenium</span><span class="stack-tag">Pandas</span><span class="stack-tag">Tableau</span></div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/tmridwan/Japanese_Reconditioned_Car_Listings_Analysis" class="proj-link" target="_blank">↗ GitHub</a>
+            <a href="https://public.tableau.com/app/profile/taiob.md.ridwan" class="proj-link" target="_blank">↗ Tableau</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-visual" style="aspect-ratio:16/9;">
+          <div style="padding:1.25rem;width:100%;height:100%;">
+            <div style="font-size:0.5rem;color:var(--muted);margin-bottom:0.4rem;letter-spacing:0.1em;">SQFT_LIVING vs PRICE — King County</div>
+            <svg width="100%" height="85%" viewBox="0 0 200 120">
+              <line x1="12" y1="112" x2="12" y2="5" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+              <line x1="12" y1="112" x2="198" y2="112" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+              <circle cx="22" cy="102" r="2" fill="rgba(255,107,107,0.5)"/>
+              <circle cx="35" cy="96" r="2.2" fill="rgba(255,107,107,0.55)"/>
+              <circle cx="48" cy="88" r="2" fill="rgba(255,107,107,0.5)"/>
+              <circle cx="58" cy="84" r="2.5" fill="rgba(255,107,107,0.65)"/>
+              <circle cx="68" cy="76" r="2" fill="rgba(255,107,107,0.5)"/>
+              <circle cx="80" cy="69" r="2.8" fill="rgba(255,107,107,0.7)"/>
+              <circle cx="92" cy="60" r="2" fill="rgba(255,107,107,0.5)"/>
+              <circle cx="104" cy="52" r="2.2" fill="rgba(255,107,107,0.55)"/>
+              <circle cx="116" cy="45" r="2.5" fill="rgba(255,107,107,0.65)"/>
+              <circle cx="130" cy="36" r="2" fill="rgba(255,107,107,0.5)"/>
+              <circle cx="143" cy="29" r="2.8" fill="rgba(255,107,107,0.7)"/>
+              <circle cx="155" cy="22" r="2" fill="rgba(255,107,107,0.5)"/>
+              <circle cx="168" cy="16" r="2.2" fill="rgba(255,107,107,0.55)"/>
+              <circle cx="182" cy="10" r="2" fill="rgba(255,107,107,0.5)"/>
+              <line x1="18" y1="108" x2="188" y2="8" stroke="rgba(255,107,107,0.7)" stroke-width="1.2" stroke-dasharray="4,2"/>
+              <text x="150" y="50" fill="rgba(255,107,107,0.9)" font-size="8" font-family="monospace">r = 0.82</text>
+            </svg>
+          </div>
+        </div>
+        <div class="project-info">
+          <div>
+            <div class="project-meta"><span class="project-tag tag-stat">EDA</span><span class="project-tag tag-stat">Statistics</span><span class="project-num">03</span></div>
+            <h3 class="project-title">King County House Pricing</h3>
+            <p class="project-desc">Full EDA on 21K+ housing records. SciPy correlation analysis revealed sqft_living & grade as top price predictors. 15-page visual Colab notebook.</p>
+            <div class="project-stack"><span class="stack-tag">Pandas</span><span class="stack-tag">Seaborn</span><span class="stack-tag">SciPy</span><span class="stack-tag">Colab</span></div>
+          </div>
+          <div class="project-links"><a href="https://www.linkedin.com/in/taiob-md-ridwan01/" class="proj-link" target="_blank">↗ LinkedIn Post</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEB TAB -->
+  <div id="tab-web" class="tab-panel">
+    <div class="web-grid fade-up">
+      <div class="web-card"><img src="https://tmridwan.github.io/portfolio/img/dw.jpg" alt="DW" class="web-card-img" onerror="this.style.height='180px';this.style.background='var(--bg3)';this.src='';"><div class="web-card-body"><div class="web-card-title">DW Website</div><div class="web-card-sub">HTML · CSS · Responsive Layout</div><a href="https://tmridwan.github.io/HTML-CSS-only-2/" target="_blank" class="web-card-link">↗ View Live</a></div></div>
+      <div class="web-card"><img src="https://tmridwan.github.io/portfolio/img/applab.jpg" alt="AppLab" class="web-card-img" onerror="this.style.height='180px';this.style.background='var(--bg3)';this.src='';"><div class="web-card-body"><div class="web-card-title">AppLab</div><div class="web-card-sub">Bootstrap · jQuery · Landing Page</div><a href="https://tmridwan.github.io/LEDP_AppLab/" target="_blank" class="web-card-link">↗ View Live</a></div></div>
+      <div class="web-card"><img src="https://tmridwan.github.io/portfolio/img/eduCafe.jpg" alt="EduCafe" class="web-card-img" onerror="this.style.height='180px';this.style.background='var(--bg3)';this.src='';"><div class="web-card-body"><div class="web-card-title">EduCafe</div><div class="web-card-sub">Bootstrap · HTML/CSS · Education</div><a href="https://tmridwan.github.io/LEDP_EduCafe/" target="_blank" class="web-card-link">↗ View Live</a></div></div>
+      <div class="web-card"><img src="https://tmridwan.github.io/portfolio/img/medical.png" alt="Medical" class="web-card-img" onerror="this.style.height='180px';this.style.background='var(--bg3)';this.src='';"><div class="web-card-body"><div class="web-card-title">Medical Website</div><div class="web-card-sub">HTML · CSS · Bootstrap · Healthcare</div><a href="https://tmridwan.github.io/HTML-CSS-Bootstrap/" target="_blank" class="web-card-link">↗ View Live</a></div></div>
+      <div class="web-card"><img src="https://tmridwan.github.io/portfolio/img/colrib_practice.jpg" alt="CodingLab" class="web-card-img" onerror="this.style.height='180px';this.style.background='var(--bg3)';this.src='';"><div class="web-card-body"><div class="web-card-title">CodingLab</div><div class="web-card-sub">HTML · CSS · Practice Project</div><a href="https://tmridwan.github.io/prctice-2/" target="_blank" class="web-card-link">↗ View Live</a></div></div>
+      <div class="web-card"><img src="https://tmridwan.github.io/portfolio/img/portfolio.png" alt="Portfolio" class="web-card-img" onerror="this.style.height='180px';this.style.background='var(--bg3)';this.src='';"><div class="web-card-body"><div class="web-card-title">Portfolio v1</div><div class="web-card-sub">HTML · CSS · JS · Personal Site</div><a href="https://tmridwan.github.io/HTML-CSS-only-4/" target="_blank" class="web-card-link">↗ View Live</a></div></div>
+    </div>
+  </div>
+
+  <!-- DESIGN TAB -->
+  <div id="tab-design" class="tab-panel">
+    <p style="font-size:0.78rem;color:var(--muted);margin-bottom:2rem;">Brand identity & logo designs created with Adobe Illustrator — for clients across food, tech, transport, and lifestyle industries.</p>
+    <div class="logo-grid fade-up">
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/chicken..png" alt="Chicken" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/dream chaser w b.png" alt="Dream Chaser" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/complex.png" alt="Complex" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/billink.jpg" alt="Billink" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/nepean eats.jpg" alt="Nepean Eats" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/888.jpg" alt="888" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/10 x bot.png" alt="10x Bot" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/truck co.png" alt="Truck Co" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/kiska.png" alt="Kiska" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/uig-1.png" alt="UIG" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/adpro.png" alt="AdPro" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/symphony.png" alt="Symphony" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/flamingo.png" alt="Flamingo" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/solar.png" alt="Solar" loading="lazy"></div>
+      <div class="logo-cell"><img src="https://tmridwan.github.io/portfolio/img/jadestone.png" alt="Jadestone" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-inner">
+    <p class="section-label">Experience</p>
+    <h2 class="section-heading">Where I've worked</h2>
+    <div class="exp-row fade-up">
+      <div><div class="exp-period">2024 – Present</div><div class="exp-company">Fiverr</div><div class="exp-location">Remote / Freelance</div></div>
+      <div><div class="exp-role">Data Analyst</div><ul class="exp-bullets"><li>Analyzed datasets for clients in marketing, e-commerce, and business operations.</li><li>Built data models and forecasting tools improving inventory planning accuracy.</li><li>Automated web scraping pipelines (BeautifulSoup & Selenium) for competitive intelligence.</li><li>Created interactive Tableau dashboards reducing manual reporting time by 70%.</li></ul></div>
+    </div>
+    <div class="exp-row fade-up">
+      <div><div class="exp-period">2021 – 2024</div><div class="exp-company">Freelance</div><div class="exp-location">Dhaka, Bangladesh</div></div>
+      <div><div class="exp-role">Graphic Designer & Front-End Developer</div><ul class="exp-bullets"><li>Designed brand identities — logos, business cards, and flyers — using Illustrator & Photoshop.</li><li>Built responsive front-end websites with HTML, CSS, Bootstrap, and jQuery.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left fade-up">
+    <p class="contact-sub">Get in touch</p>
+    <h2 class="contact-heading">Let's build<br><span class="outline">something.</span></h2>
+    <p class="contact-info-text">Open to data science projects, AI engineering collaborations, and freelance analytics or design work. Drop me a message and I'll get back to you.</p>
+    <a href="mailto:tridwan.ds25@gmail.com" class="contact-email">tridwan.ds25@gmail.com</a>
+    <div class="social-links">
+      <a href="https://github.com/tmridwan" target="_blank" class="social-link">↗ GitHub</a>
+      <a href="https://www.linkedin.com/in/taiob-md-ridwan01/" target="_blank" class="social-link">↗ LinkedIn</a>
+      <a href="https://huggingface.co/tmridwan03" target="_blank" class="social-link">↗ HuggingFace</a>
+      <a href="https://public.tableau.com/app/profile/taiob.md.ridwan" target="_blank" class="social-link">↗ Tableau</a>
+    </div>
+  </div>
+  <div class="contact-right fade-up">
+    <p class="form-heading">Send a message</p>
+    <div class="form-row">
+      <div class="form-group"><label>Your Name</label><input type="text" class="form-control" placeholder="John Doe" id="f-name"></div>
+      <div class="form-group"><label>Your Email</label><input type="email" class="form-control" placeholder="john@email.com" id="f-email"></div>
+    </div>
+    <div class="form-group"><label>Subject</label><input type="text" class="form-control" placeholder="Project collaboration, freelance work..." id="f-subject"></div>
+    <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Tell me about your project or idea..." id="f-message"></textarea></div>
+    <button class="submit-btn" onclick="sendMsg()">Send Message →</button>
+    <div class="form-success" id="form-success">✓ Message sent! I'll get back to you within 24 hours.</div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Taiob Md Ridwan. All rights reserved.</span>
+  <span>Dhaka, Bangladesh</span>
+</footer>
+
+<script>
+const cursor=document.getElementById("cursor"),ring=document.getElementById("cursor-ring");
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;});
+function animate(){cursor.style.left=mx+"px";cursor.style.top=my+"px";rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(animate);}
+animate();
+document.querySelectorAll("a,button,.web-card,.skill-card,.project-card,.logo-cell").forEach(el=>{
+  el.addEventListener("mouseenter",()=>{cursor.style.transform="translate(-50%,-50%) scale(2)";cursor.style.background="var(--accent2)";ring.style.width="50px";ring.style.height="50px";});
+  el.addEventListener("mouseleave",()=>{cursor.style.transform="translate(-50%,-50%) scale(1)";cursor.style.background="var(--accent)";ring.style.width="36px";ring.style.height="36px";});
+});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible");}),{threshold:0.12});
+document.querySelectorAll(".fade-up").forEach(el=>obs.observe(el));
+
+function showTab(name){
+  document.querySelectorAll(".proj-tab").forEach(t=>t.classList.remove("active"));
+  document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));
+  document.getElementById("tab-"+name).classList.add("active");
+  event.target.classList.add("active");
+}
+
+function sendMsg(){
+  const name=document.getElementById("f-name").value.trim();
+  const email=document.getElementById("f-email").value.trim();
+  const subject=document.getElementById("f-subject").value.trim();
+  const message=document.getElementById("f-message").value.trim();
+  if(!name||!email||!message){alert("Please fill in all required fields.");return;}
+  const mailto=`mailto:tridwan.ds25@gmail.com?subject=${encodeURIComponent(subject||"Portfolio Inquiry — "+name)}&body=${encodeURIComponent("Name: "+name+"\nEmail: "+email+"\n\n"+message)}`;
+  window.location.href=mailto;
+  document.getElementById("form-success").style.display="block";
+  setTimeout(()=>document.getElementById("form-success").style.display="none",5000);
+}
+</script>
+</body>
+</html>
