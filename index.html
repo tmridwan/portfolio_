@@ -308,8 +308,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     <div class="journey-item"><div class="journey-year">2021</div><div><div class="journey-title">Graphic Designer</div><div class="journey-desc">Started with logo & brand identity design. Built first portfolio website from scratch.</div></div></div>
     <div class="journey-item"><div class="journey-year">2022</div><div><div class="journey-title">Front-End Developer</div><div class="journey-desc">Transitioned into web development — HTML, CSS, JS, Bootstrap, jQuery. Fiverr web design clients.</div></div></div>
     <div class="journey-item"><div class="journey-year">2024</div><div><div class="journey-title">Data Analyst → Data Science Student</div><div class="journey-desc">First data viz project (King County Housing). Enrolled in BSc Data Science at UIU.</div></div></div>
-    <div class="journey-item"><div class="journey-year">2025</div><div><div class="journey-title">Aspiring AI Engineer</div><div class="journey-desc">Built CNN vehicle classifier with PyTorch + Gradio. Published Japanese car market analysis on Tableau Public.</div></div></div>
-    <div class="journey-item"><div class="journey-year">2025</div><div><div class="journey-title">Aspiring AI Engineer</div><div class="journey-desc">Built CNN vehicle classifier with PyTorch + Gradio. Published Japanese car market analysis on Tableau Public. Completed 9-query SQL analysis project with MySQL.</div></div></div>
+    <div class="journey-item"><div class="journey-year">2025-2026</div><div><div class="journey-title">Aspiring AI Engineer</div><div class="journey-desc">Built CNN vehicle classifier with PyTorch + Gradio. Published Japanese car market analysis on Tableau Public. Completed 9-query SQL analysis project with MySQL.</div></div></div>
   </div>
 </section>
 
@@ -341,8 +340,54 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
 
   <!-- AI TAB -->
   <div id="tab-ai" class="tab-panel active">
+    <div class="projects-grid" style="margin-top:0;">
     <div class="project-card fade-up">
-      <div class="project-visual">
+        <div class="project-visual" style="aspect-ratio:16/9;">
+          <!-- Home Credit visual: mini dashboard mockup -->
+          <div style="padding:1rem;width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+            <div style="background:rgba(124,106,255,0.08);border:1px solid rgba(124,106,255,0.2);border-radius:4px;padding:0.6rem;">
+              <div style="font-size:0.5rem;color:var(--accent);margin-bottom:0.3rem;letter-spacing:0.08em;">DEFAULT RATE</div>
+              <div style="display:flex;align-items:baseline;gap:4px;"><span style="font-size:1.1rem;font-weight:700;color:var(--text);">8.07%</span><span style="font-size:0.45rem;color:rgba(255,107,107,0.8);">↑ High-risk</span></div>
+              <div style="margin-top:4px;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:8%;height:100%;background:var(--accent3);border-radius:2px;"></div></div>
+            </div>
+            <div style="background:rgba(124,106,255,0.08);border:1px solid rgba(124,106,255,0.2);border-radius:4px;padding:0.6rem;">
+              <div style="font-size:0.5rem;color:var(--accent);margin-bottom:0.3rem;letter-spacing:0.08em;">ROC-AUC</div>
+              <div style="font-size:1.1rem;font-weight:700;color:var(--text);">0.767</div>
+              <div style="font-size:0.45rem;color:var(--accent2);">3-model blend</div>
+            </div>
+            <div style="background:rgba(124,106,255,0.08);border:1px solid rgba(124,106,255,0.2);border-radius:4px;padding:0.6rem;">
+              <div style="font-size:0.5rem;color:var(--accent);margin-bottom:0.3rem;">RISK BY AGE</div>
+              <div style="display:flex;align-items:flex-end;gap:2px;height:28px;">
+                <div style="width:10px;height:60%;background:rgba(124,106,255,0.5);border-radius:1px 1px 0 0;"></div>
+                <div style="width:10px;height:80%;background:rgba(124,106,255,0.7);border-radius:1px 1px 0 0;"></div>
+                <div style="width:10px;height:100%;background:var(--accent);border-radius:1px 1px 0 0;"></div>
+                <div style="width:10px;height:75%;background:rgba(124,106,255,0.55);border-radius:1px 1px 0 0;"></div>
+                <div style="width:10px;height:50%;background:rgba(124,106,255,0.35);border-radius:1px 1px 0 0;"></div>
+              </div>
+            </div>
+            <div style="background:rgba(124,106,255,0.08);border:1px solid rgba(124,106,255,0.2);border-radius:4px;padding:0.6rem;">
+              <div style="font-size:0.5rem;color:var(--accent);margin-bottom:0.3rem;">TOP FEATURE</div>
+              <div style="font-size:0.55rem;color:var(--text);line-height:1.4;">EXT_SOURCE_2</div>
+              <div style="height:3px;background:rgba(124,106,255,0.6);border-radius:2px;width:90%;margin-top:3px;"></div>
+              <div style="height:3px;background:rgba(124,106,255,0.4);border-radius:2px;width:70%;margin-top:2px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div>
+            <div class="project-meta"><span class="project-tag tag-ai">Machine Learning</span><span class="project-tag tag-viz">Tableau</span><span class="project-num">01</span></div>
+            <h3 class="project-title">Home Credit Default Risk</h3>
+            <p class="project-desc">End-to-end loan default prediction pipeline on 307K applicants. Multi-table feature engineering (+40 features across 6 tables), gradient boosting ensemble (LightGBM + CatBoost + XGBoost), and a 3-page Tableau dashboard covering portfolio overview, risk trends, and model performance.</p>
+            <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">LightGBM</span><span class="stack-tag">CatBoost</span><span class="stack-tag">XGBoost</span><span class="stack-tag">Tableau</span><span class="stack-tag">Pandas</span></div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/tmridwan/Credit_default_risk" class="proj-link" target="_blank">↗ GitHub</a>
+            <a href="https://public.tableau.com/app/profile/taiob.md.ridwan/viz/DAproject_17903669641940/ModelPerformance" class="proj-link" target="_blank">↗ Tableau</a>
+          </div>
+        </div>
+      </div>
+    <div class="project-card fade-up">
+      <div class="project-visual" style="aspect-ratio:16/9;">
         <div style="display:flex;align-items:center;gap:8px;padding:1.5rem;" class="cnn-visual">
           <div class="cnn-layer"><div style="width:36px;height:36px;background:rgba(124,106,255,0.25);border-radius:4px;border:1px solid rgba(124,106,255,0.4);display:flex;align-items:center;justify-content:center;font-size:1rem;">🚗</div><div class="cnn-label">Input</div></div>
           <div class="cnn-arrow"></div>
@@ -362,7 +407,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
       </div>
       <div class="project-info">
         <div>
-          <div class="project-meta"><span class="project-tag tag-ai">Deep Learning</span><span class="project-tag tag-ai">Computer Vision</span><span class="project-num">01</span></div>
+          <div class="project-meta"><span class="project-tag tag-ai">Deep Learning</span><span class="project-tag tag-ai">Computer Vision</span><span class="project-num">02</span></div>
           <h3 class="project-title">Vehicle Classification using CNN</h3>
           <p class="project-desc">End-to-end deep learning pipeline classifying vehicle types using a fine-tuned ConvNeXt model. Deployed as a real-time Gradio web app achieving 92% confidence on car classification.</p>
           <div class="project-stack"><span class="stack-tag">PyTorch</span><span class="stack-tag">fastai</span><span class="stack-tag">ConvNeXt</span><span class="stack-tag">Gradio</span><span class="stack-tag">Transfer Learning</span></div>
@@ -372,6 +417,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
           <a href="https://github.com/tmridwan/vehicle_recognizer" class="proj-link" target="_blank">↗ GitHub</a>
         </div>
       </div>
+    </div>
     </div>
     <div class="projects-grid">
       <div class="project-card fade-up">
@@ -402,7 +448,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
         </div>
         <div class="project-info">
           <div>
-            <div class="project-meta"><span class="project-tag tag-viz">Tableau</span><span class="project-tag tag-data">Scraping</span><span class="project-num">02</span></div>
+            <div class="project-meta"><span class="project-tag tag-viz">Tableau</span><span class="project-tag tag-data">Scraping</span><span class="project-num">03</span></div>
             <h3 class="project-title">Japanese Car Market Analysis</h3>
             <p class="project-desc">Scraped live listings with Selenium, built 3 interactive Tableau dashboards analysing brand popularity, depreciation curves, and fuel premiums.</p>
             <div class="project-stack"><span class="stack-tag">Selenium</span><span class="stack-tag">Pandas</span><span class="stack-tag">Tableau</span></div>
@@ -441,7 +487,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
         </div>
         <div class="project-info">
           <div>
-            <div class="project-meta"><span class="project-tag tag-stat">EDA</span><span class="project-tag tag-stat">Statistics</span><span class="project-num">03</span></div>
+            <div class="project-meta"><span class="project-tag tag-stat">EDA</span><span class="project-tag tag-stat">Statistics</span><span class="project-num">04</span></div>
             <h3 class="project-title">King County House Pricing</h3>
             <p class="project-desc">Full EDA on 21K+ housing records. SciPy correlation analysis revealed sqft_living & grade as top price predictors. 15-page visual Colab notebook.</p>
             <div class="project-stack"><span class="stack-tag">Pandas</span><span class="stack-tag">Seaborn</span><span class="stack-tag">SciPy</span><span class="stack-tag">Colab</span></div>
@@ -452,51 +498,6 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
     
     <div class="projects-grid" style="margin-top:1.5rem;">
-      <div class="project-card fade-up">
-        <div class="project-visual" style="aspect-ratio:16/9;">
-          <!-- Home Credit visual: mini dashboard mockup -->
-          <div style="padding:1rem;width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;gap:5px;">
-            <div style="background:rgba(124,106,255,0.08);border:1px solid rgba(124,106,255,0.2);border-radius:4px;padding:0.6rem;">
-              <div style="font-size:0.5rem;color:var(--accent);margin-bottom:0.3rem;letter-spacing:0.08em;">DEFAULT RATE</div>
-              <div style="display:flex;align-items:baseline;gap:4px;"><span style="font-size:1.1rem;font-weight:700;color:var(--text);">8.07%</span><span style="font-size:0.45rem;color:rgba(255,107,107,0.8);">↑ High-risk</span></div>
-              <div style="margin-top:4px;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:8%;height:100%;background:var(--accent3);border-radius:2px;"></div></div>
-            </div>
-            <div style="background:rgba(124,106,255,0.08);border:1px solid rgba(124,106,255,0.2);border-radius:4px;padding:0.6rem;">
-              <div style="font-size:0.5rem;color:var(--accent);margin-bottom:0.3rem;letter-spacing:0.08em;">ROC-AUC</div>
-              <div style="font-size:1.1rem;font-weight:700;color:var(--text);">0.767</div>
-              <div style="font-size:0.45rem;color:var(--accent2);">3-model blend</div>
-            </div>
-            <div style="background:rgba(124,106,255,0.08);border:1px solid rgba(124,106,255,0.2);border-radius:4px;padding:0.6rem;">
-              <div style="font-size:0.5rem;color:var(--accent);margin-bottom:0.3rem;">RISK BY AGE</div>
-              <div style="display:flex;align-items:flex-end;gap:2px;height:28px;">
-                <div style="width:10px;height:60%;background:rgba(124,106,255,0.5);border-radius:1px 1px 0 0;"></div>
-                <div style="width:10px;height:80%;background:rgba(124,106,255,0.7);border-radius:1px 1px 0 0;"></div>
-                <div style="width:10px;height:100%;background:var(--accent);border-radius:1px 1px 0 0;"></div>
-                <div style="width:10px;height:75%;background:rgba(124,106,255,0.55);border-radius:1px 1px 0 0;"></div>
-                <div style="width:10px;height:50%;background:rgba(124,106,255,0.35);border-radius:1px 1px 0 0;"></div>
-              </div>
-            </div>
-            <div style="background:rgba(124,106,255,0.08);border:1px solid rgba(124,106,255,0.2);border-radius:4px;padding:0.6rem;">
-              <div style="font-size:0.5rem;color:var(--accent);margin-bottom:0.3rem;">TOP FEATURE</div>
-              <div style="font-size:0.55rem;color:var(--text);line-height:1.4;">EXT_SOURCE_2</div>
-              <div style="height:3px;background:rgba(124,106,255,0.6);border-radius:2px;width:90%;margin-top:3px;"></div>
-              <div style="height:3px;background:rgba(124,106,255,0.4);border-radius:2px;width:70%;margin-top:2px;"></div>
-            </div>
-          </div>
-        </div>
-        <div class="project-info">
-          <div>
-            <div class="project-meta"><span class="project-tag tag-ai">Machine Learning</span><span class="project-tag tag-viz">Tableau</span><span class="project-num">04</span></div>
-            <h3 class="project-title">Home Credit Default Risk</h3>
-            <p class="project-desc">End-to-end loan default prediction pipeline on 307K applicants. Multi-table feature engineering (+40 features across 6 tables), gradient boosting ensemble (LightGBM + CatBoost + XGBoost), and a 3-page Tableau dashboard covering portfolio overview, risk trends, and model performance.</p>
-            <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">LightGBM</span><span class="stack-tag">CatBoost</span><span class="stack-tag">XGBoost</span><span class="stack-tag">Tableau</span><span class="stack-tag">Pandas</span></div>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/tmridwan/home-credit-default-risk" class="proj-link" target="_blank">↗ GitHub</a>
-            <a href="https://public.tableau.com/app/profile/taiob.md.ridwan/viz/DAproject_17903669641940/ModelPerformance" class="proj-link" target="_blank">↗ Tableau</a>
-          </div>
-        </div>
-      </div>
       <div class="project-card fade-up">
         <div class="project-visual" style="aspect-ratio:16/9;">
           <div style="padding:1.25rem;width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
@@ -535,8 +536,6 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
           </div>
         </div>
       </div>
-    </div>
-    <div class="projects-grid" style="margin-top:1.5rem;">
       <div class="project-card fade-up">
         <div class="project-visual" style="aspect-ratio:16/9;">
           <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:1.5rem;">
